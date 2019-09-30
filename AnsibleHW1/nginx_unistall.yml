@@ -1,0 +1,11 @@
+---
+- name: stop Nginx and uninstall Nginx on an Azure virtual machine
+  hosts: all
+  become: yes
+  tasks:
+    - name: stop nginx
+      service:
+          name: nginx
+          state: stopped
+    - name: ensure nginx is not installed
+      apt: name=nginx state=absent
